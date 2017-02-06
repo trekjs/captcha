@@ -30,7 +30,15 @@ fs.createWriteStream('a.gif').on('finish', () => console.log('END')).end(buffer)
 
 ## API
 
-`captcha(int)`
+`captcha(style)`
+
+```js
+// returns
+{
+  token,
+  buffer
+}
+```
 
 
 ## Badges

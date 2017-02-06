@@ -8,17 +8,20 @@
 #include "font.h"
 #include "colors.h"
 
-// http://github.com/ITikhonov/captcha
-const int gifsize=17646;
-void captcha(unsigned char im[70*200], unsigned char l[6]);
-void makegif(unsigned char im[70*200], unsigned char gif[gifsize], int style);
-
 using v8::FunctionCallbackInfo;
 using v8::Isolate;
 using v8::Local;
 using v8::Object;
 using v8::String;
 using v8::Value;
+using Nan::New;
+using Nan::Set;
+using Nan::CopyBuffer;
+
+// http://github.com/ITikhonov/captcha
+const int gifsize=17646;
+void captcha(unsigned char im[70*200], unsigned char l[6]);
+void makegif(unsigned char im[70*200], unsigned char gif[gifsize], int style);
 
 void makegif(unsigned char im[70*200], unsigned char gif[gifsize], int style) {
   // tag ; widthxheight ; GCT:0:0:7 ; bgcolor + aspect // GCT
@@ -176,20 +179,14 @@ void Method(const FunctionCallbackInfo<Value>& args) {
   unsigned char im[80*200];
   unsigned char gif[gifsize];
 
-  int i_style = args[0]->NumberValue();
+  int style = args[0]->NumberValue();
 
   captcha(im, l);
-  makegif(im, gif, i_style);
+  makegif(im, gif, style);
 
-  Isolate* isolate = args.GetIsolate();
-
-  Local<Object> result = Object::New(isolate);
-  char *dynamic_data = static_cast<char *>(malloc(gifsize));
-  for (int i = 0; i < gifsize; i++) {
-    dynamic_data[i] = gif[i];
-  }
-  Nan::Set(result, Nan::New<String>("token").ToLocalChecked(), String::NewFromUtf8(isolate, reinterpret_cast<const char*>(l)));
-  Nan::Set(result, Nan::New<String>("buffer").ToLocalChecked(), Nan::NewBuffer(dynamic_data, gifsize).ToLocalChecked());
+  Local<Object> result = New<Object>();
+  Set(result, New<String>("token").ToLocalChecked(), New<String>(reinterpret_cast<const char*>(l)).ToLocalChecked());
+  Set(result, New<String>("buffer").ToLocalChecked(), CopyBuffer(reinterpret_cast<const char*>(gif), gifsize).ToLocalChecked());
   args.GetReturnValue().Set(result);
 }
 
