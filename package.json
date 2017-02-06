@@ -1,7 +1,7 @@
 {
   "name": "trek-captcha",
   "version": "0.1.0",
-  "description": "",
+  "description": "A Lightweight Captcha (C++) for Node.js. No ImageMagick, No RMagick.",
   "repository": "trekjs/captcha",
   "author": {
     "name": "Fangdun Cai",
