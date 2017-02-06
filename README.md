@@ -1,6 +1,6 @@
 # captcha
 
-A lightweight captcha (C++) for Node.js. No ImageMagick, No RMagick. Inspired By [rucaptcha](https://github.com/huacnlee/rucaptcha).
+A lightweight captcha (C++) for Node.js. No ImageMagick, No canvas. Inspired By [rucaptcha](https://github.com/huacnlee/rucaptcha).
 
 
 ## Installation
