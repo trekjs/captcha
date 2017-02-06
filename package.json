@@ -1,0 +1,24 @@
+{
+  "name": "trek-captcha",
+  "version": "0.1.0",
+  "description": "",
+  "repository": "trekjs/captcha",
+  "author": {
+    "name": "Fangdun Cai",
+    "email": "cfddream@gmail.com",
+    "url": "fundon.me"
+  },
+  "license": "MIT",
+  "keywords": [
+    "trek",
+    "trek-engine",
+    "captcha"
+  ],
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "nan": "2.5.1"
+  }
+}
