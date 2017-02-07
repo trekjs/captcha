@@ -33,8 +33,8 @@ void makegif(unsigned char im[70*200], unsigned char gif[gifsize], int style) {
   // tag ; widthxheight ; GCT:0:0:7 ; bgcolor + aspect // GCT
   // Image Separator // left x top // widthxheight // Flags
   // LZW code size
-  // srand(time(NULL));
   srand ((unsigned int)time(NULL));
+  //srand(time(NULL));
   int color_len = (int) sizeof(colors) / sizeof(colors[0]);
   int color_idx = rand() % color_len;
   if (style == 0) {
@@ -187,13 +187,20 @@ void Method(const FunctionCallbackInfo<Value>& args) {
   unsigned char gif[gifsize];
 
   int style = (int)args[0]->NumberValue();
+  //int style = args[0]->NumberValue();
 
   captcha(im, l);
   makegif(im, gif, style);
 
   Local<Object> result = New<Object>();
+
+  char *dynamic_data = static_cast<char *>(malloc(gifsize));
+  for (int i = 0; i < gifsize; i++) {
+    dynamic_data[i] = gif[i];
+  }
   Set(result, New<String>("token").ToLocalChecked(), New<String>(reinterpret_cast<const char*>(l)).ToLocalChecked());
-  Set(result, New<String>("buffer").ToLocalChecked(), CopyBuffer(reinterpret_cast<const char*>(gif), gifsize).ToLocalChecked());
+  Set(result, Nan::New<String>("buffer").ToLocalChecked(), Nan::NewBuffer(dynamic_data, gifsize).ToLocalChecked());
+  //Set(result, New<String>("buffer").ToLocalChecked(), CopyBuffer(reinterpret_cast<const char*>(gif), gifsize).ToLocalChecked());
   args.GetReturnValue().Set(result);
 }
 
