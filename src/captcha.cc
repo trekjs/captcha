@@ -1,5 +1,8 @@
 #ifdef WIN32
 #include <io.h>
+typedef __int8            int8_t;
+typedef unsigned __int8   uint8_t;
+typedef unsigned __int32  uint32_t;
 #else
 #include <unistd.h>
 #endif
