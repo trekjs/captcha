@@ -33,7 +33,8 @@ void makegif(unsigned char im[70*200], unsigned char gif[gifsize], int style) {
   // tag ; widthxheight ; GCT:0:0:7 ; bgcolor + aspect // GCT
   // Image Separator // left x top // widthxheight // Flags
   // LZW code size
-  srand(time(NULL));
+  // srand(time(NULL));
+  srand ((unsigned int)time(NULL));
   int color_len = (int) sizeof(colors) / sizeof(colors[0]);
   int color_idx = rand() % color_len;
   if (style == 0) {
@@ -185,7 +186,7 @@ void Method(const FunctionCallbackInfo<Value>& args) {
   unsigned char im[80*200];
   unsigned char gif[gifsize];
 
-  int style = args[0]->NumberValue();
+  int style = (int)args[0]->NumberValue();
 
   captcha(im, l);
   makegif(im, gif, style);
