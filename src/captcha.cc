@@ -194,13 +194,8 @@ void Method(const FunctionCallbackInfo<Value>& args) {
 
   Local<Object> result = New<Object>();
 
-  char *dynamic_data = static_cast<char *>(malloc(gifsize));
-  for (int i = 0; i < gifsize; i++) {
-    dynamic_data[i] = gif[i];
-  }
   Set(result, New<String>("token").ToLocalChecked(), New<String>(reinterpret_cast<const char*>(l)).ToLocalChecked());
-  Set(result, Nan::New<String>("buffer").ToLocalChecked(), Nan::NewBuffer(dynamic_data, gifsize).ToLocalChecked());
-  //Set(result, New<String>("buffer").ToLocalChecked(), CopyBuffer(reinterpret_cast<const char*>(gif), gifsize).ToLocalChecked());
+  Set(result, New<String>("buffer").ToLocalChecked(), CopyBuffer(reinterpret_cast<const char*>(gif), gifsize).ToLocalChecked());
   args.GetReturnValue().Set(result);
 }
 
