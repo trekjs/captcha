@@ -43,7 +43,8 @@ fs.createWriteStream('a.gif').on('finish', () => console.log('END')).end(buffer)
 
 ## Badges
 
-[![Build Status](https://travis-ci.org/trekjs/captcha.svg?branch=master)](https://travis-ci.org/trekjs/captcha)
+[![Linux](https://travis-ci.org/trekjs/captcha.svg?branch=master)](https://travis-ci.org/trekjs/captcha)
+[![Windows](https://img.shields.io/appveyor/ci/fundon/captcha/master.svg?label=windows)](https://ci.appveyor.com/project/fundon/captcha)
 [![codecov](https://codecov.io/gh/trekjs/captcha/branch/master/graph/badge.svg)](https://codecov.io/gh/trekjs/captcha)
 ![](https://img.shields.io/badge/license-MIT-blue.svg)
 
