@@ -16,7 +16,7 @@
   ],
   "main": "index.js",
   "scripts": {
-    "test": "nyc ava"
+    "test": "node test/test.js"
   },
   "dependencies": {
     "nan": "2.5.1"
