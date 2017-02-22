@@ -8,12 +8,12 @@ platform:
 install:
   - ps: Update-NodeJsInstallation (Get-NodeJsLatestBuild $env:nodejs_version)
   - ps: Install-Product node $env:nodejs_version $env:platform
-  - npm install
-  - npm install -g node-gyp && node-gyp configure --release && node-gyp build
+  - yarn install
+  - yarn install -g node-gyp && node-gyp configure --release && node-gyp build
 test_script:
   - node --version
   - npm --version
-  - npm test
+  - yarn test
 matrix:
   fast_finish: true
 build: off

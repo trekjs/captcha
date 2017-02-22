@@ -28,7 +28,7 @@ node_js:
   - "6"
   - "7"
 script:
-  - npm test
+  - yarn test
 after_script:
-  - npm install codecov
+  - yarn install codecov
   - ./node_modules/.bin/codecov
