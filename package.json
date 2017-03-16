@@ -1,7 +1,7 @@
 {
   "name": "trek-captcha",
   "version": "0.2.0",
-  "description": "A Lightweight Captcha (C++) for Node.js. No ImageMagick, No canvas.",
+  "description": "A Lightweight Pure JavaScript Captcha for Node.js. No C/C++, No ImageMagick, No canvas.",
   "repository": "trekjs/captcha",
   "author": {
     "name": "Fangdun Cai",
@@ -14,19 +14,15 @@
     "trek-engine",
     "captcha"
   ],
-  "main": "index.js",
+  "main": "lib/captcha",
   "scripts": {
     "test": "nyc ava"
-  },
-  "dependencies": {
-    "nan": "2.5.1"
   },
   "devDependencies": {
     "ava": "0.18",
     "nyc": "10",
     "request": "2",
-    "request-promise": "4",
-    "trek-engine": "0.5"
+    "request-promise": "4"
   },
   "ava": {
     "concurrency": 5
