@@ -29,7 +29,10 @@ fs.createWriteStream('a.gif').on('finish', () => console.log(token)).end(buffer)
 
 ## API
 
-`captcha(style)`
+`captcha({ size: 5, style: -1 })`
+
+* **size**:   Defaults to 5.
+* **style**: Defaults to -1 with random.
 
 ```js
 // returns
