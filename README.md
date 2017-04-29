@@ -18,7 +18,7 @@ $ npm install trek-captcha --save
 const fs = require('fs')
 const captcha = require('trek-captcha')
 
-const { token, buffer } = captcha()
+const { token, buffer } = await captcha()
 
 // console.log(token, buffer)
 
