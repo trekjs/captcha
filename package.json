@@ -19,7 +19,7 @@
     "test": "nyc ava"
   },
   "devDependencies": {
-    "ava": "0.18",
+    "ava": "0.19",
     "nyc": "10",
     "request": "2",
     "request-promise": "4"
@@ -29,6 +29,7 @@
   },
   "nyc": {
     "reporter": [
+      "html",
       "lcov",
       "text"
     ]
